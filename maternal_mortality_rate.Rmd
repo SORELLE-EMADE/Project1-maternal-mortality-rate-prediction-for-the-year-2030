@@ -1,0 +1,147 @@
+---
+title: "Talk"
+author: "Sorelle"
+date: "2025-01-26"
+output: html_document
+---
+
+
+```{r}
+data_mortality<-read.csv("/home/student/Documents/Dossiers_AIMS_Cameroon/sorelle/AC597B1_ALL_LATEST.csv")
+```
+
+```{r}
+View(data_mortality)
+```
+sort the data in descending order of years
+```{r}
+library(dplyr)
+data_desc<-data_mortality %>%
+  arrange(DIM_TIME)
+```
+
+```{r}
+View(data_desc)
+```
+
+```{r}
+missing_values_count <- sapply(data_desc, function(x) sum(is.na(x)))
+
+print(missing_values_count)
+```
+#calculate the mean per year
+
+```{r}
+Average_per_year <- data_desc %>%
+  group_by(DIM_TIME ) %>%
+  summarise(average = mean(RATE_PER_100000_N, na.rm = TRUE))
+View(Average_per_year)
+```
+
+#plot
+```{r}
+library(ggplot2)
+ggplot(Average_per_year, aes(x = DIM_TIME, y = average)) +
+  geom_line() +                       
+  geom_point() +                    
+  labs(title = "mean of the rate per year",
+       x = "year",
+       y = "rate of maternal mortality per 100000") +
+  theme_minimal()  
+```
+
+#min et max fonction of country
+```{r}
+max_min_per_year <- data_desc %>%
+  group_by(DIM_TIME) %>%
+  summarise(
+    Country_max = GEO_NAME_SHORT[which.max(RATE_PER_100000_N)],
+    max_rate = max(RATE_PER_100000_N, na.rm = TRUE),
+    Country_min = GEO_NAME_SHORT[which.min(RATE_PER_100000_N)],
+    min_rate = min(RATE_PER_100000_N, na.rm = TRUE)
+  )
+
+View(max_min_per_year)
+```
+
+
+
+
+
+```{r}
+summary(data_desc)
+```
+new data
+```{r}
+new_data <- data_desc %>%
+  select(DIM_TIME, GEO_NAME_SHORT,RATE_PER_100000_N )
+
+View(new_data)
+```
+
+```{r}
+new_data$GEO_NAME_SHORT<-as.factor(new_data$GEO_NAME_SHORT)
+```
+
+```{r}
+summary(new_data)
+```
+
+```{r}
+
+str(new_data)  
+
+```
+
+```{r}
+
+correlation_matrix <- cor(new_data[, sapply(new_data, is.numeric)])  
+library(corrplot)                  
+corrplot(correlation_matrix, method = "square")  
+```
+```{r}
+numeric_columns <- new_data[, sapply(new_data, is.numeric)]  
+par(mfrow=c(2,2))  
+for (col in colnames(numeric_columns)) {
+    hist(numeric_columns[[col]], main=col, xlab=col, col="lightblue", border="black")}
+```
+```{r}
+
+boxplot(new_data$DIM_TIME~new_data$GEO_NAME_SHORT)
+```
+```{r}
+
+boxplot(new_data$RATE_PER_100000_N~new_data$GEO_NAME_SHORT)
+```
+
+
+
+#MODEL
+```{r}
+new_data$RATE_PER_100000_N <- as.numeric(new_data$RATE_PER_100000_N)
+
+model <- glm(RATE_PER_100000_N ~ DIM_TIME + GEO_NAME_SHORT, family = poisson, data = new_data)
+summary(model)
+```
+
+
+#prediction of the rate for 2030
+```{r}
+new_year <- data.frame(DIM_TIME = 2030, country = unique(new_data$GEO_NAME_SHORT))
+
+# Prediction for 2030
+global_predictions <- predict(model, new_data = new_year, type = "response")
+
+# prediction for all the country
+results <- data.frame(country= unique(new_data$GEO_NAME_SHORT), prediction = global_predictions)
+head(results)
+```
+
+
+```{r}
+average_prediction <- mean(global_predictions)
+
+print(paste("the predicted  mean of the maternal mortality rate for the year  2030 is:",average_prediction))
+```
+
+

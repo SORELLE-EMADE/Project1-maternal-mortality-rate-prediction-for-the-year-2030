@@ -1,45 +1,95 @@
-# Project1-maternal-mortality-rate-prediction-for-the-year-2030
-# 📘 Maternal Mortality Rate Analysis in R
+#  Analysis and Prediction of Maternal Mortality Rate using a Statistical Model
 
-## 📌 Project Title
-**Exploratory and Causal Analysis of Maternal Mortality Rate**
 
----
 
-## 📖 Description
+### A Critical Health Challenge
 
-This project aims to analyze the **Maternal Mortality Rate (MMR)** using statistical and visual techniques in **R**. The objective is to explore temporal and geographical trends in MMR, and identify potential relationships with other indicators such as GDP and health expenditure. The analysis includes:
-- Data wrangling and cleaning
-- Time series visualization
-- Geographical mapping
-- Correlation and regression analysis
+Maternal mortality has long been a major concern for national health services.  
+It is defined as the death of a woman during pregnancy, childbirth, or within 42 days of termination of pregnancy, regardless of the duration and location of the pregnancy.
+
+### Why This Matters
+
+Every year, thousands of women lose their lives due to preventable complications.  
+Understanding and predicting maternal mortality is crucial for implementing effective and timely interventions.
 
 ---
 
-## 🧰 Technologies Used
+## Factors Influencing Maternal Mortality
 
-- **R**
-- **RMarkdown**
-- `ggplot2` for data visualization  
-- `dplyr`, `tidyr` for data manipulation  
-- `readr`, `lubridate`, `scales`, `broom`  
-- `rworldmap` for geographical plotting  
-
----
-
-## 📂 Files
-
-- `maternal_mortality_rate.Rmd` – Main R Markdown file containing code and explanations  
-- `figures/` – Folder where generated plots and maps are stored  
-- `data/` – (Optional) Folder containing datasets used in the analysis  
+This project investigates the association between maternal mortality and the following variables:
+- GDP per capita
+- Health expenditure
+- Skilled birth attendance
+- Access to healthcare
+- Geographical region
+- Year (temporal trends)
 
 ---
 
-## ▶️ How to Run
+## Methodology
 
-1. Open `maternal_mortality_rate.Rmd` in **RStudio**.
-2. Click **Knit** to produce the report (HTML or PDF).
-3. Make sure to install the required packages if not already available:
-```r
-install.packages(c("tidyverse", "lubridate", "rworldmap", "broom"))
+1. **Data Cleaning & Transformation**  
+   Using `dplyr`, `tidyr`, and `lubridate` to prepare the data for analysis.
+
+2. **Exploratory Data Analysis (EDA)**  
+   - Time series visualization  
+   - Correlation matrices  
+   - Heatmaps and maps  
+   - Trend plots
+
+    **Insert Figure:**  
+   *Example: A time series plot showing maternal mortality trend from 2000 to 2017*  
+   `![](figures/mmr_trend_plot.png)`
+
+3. **Regression Modeling**  
+   Linear regression and multivariate regression models were applied to identify associations and predictive factors.
+
+4. **Mapping and Geographic Analysis**  
+   Using the `rworldmap` package to visualize MMR by region.
+
+    **Insert Figure:**  
+   *Example: World map displaying MMR by country*  
+   `![](figures/mmr_world_map.png)`
+
+---
+
+## Data Description
+
+The dataset includes the following columns:
+| Variable                     | Description                                         |
+|-----------------------------|-----------------------------------------------------|
+| Country                     | Name of the country                                 |
+| Year                        | Year of observation                                 |
+| Maternal Mortality Rate     | Number of maternal deaths per 100,000 live births   |
+| GDP per capita              | Economic indicator in USD                           |
+| Health expenditure (% GDP)  | Total health spending relative to GDP               |
+| Skilled Birth Attendance    | Percentage of births attended by skilled personnel  |
+
+---
+
+## Results: Trend of maternal mortality
+
+
+
+
+---
+
+##  Conclusion
+
+- Maternal mortality is significantly associated with GDP per capita, healthcare expenditure, and access to skilled birth attendance.
+- Higher economic development and better health systems correlate with lower MMR.
+- Mapping reveals strong geographical disparities in maternal health.
+
+---
+
+## 📚 References
+
+1. World Bank Dataset on Maternal Mortality  
+2. WHO Health Statistics 2017  
+3. UN SDG Reports  
+
+
+---
+
+
 

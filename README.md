@@ -58,7 +58,7 @@ The dataset includes the following columns:
 ---
 
 ## Results: Trend of maternal mortality
- ![Figure 1: Maternal mortality by region over time](figures/mmr_by_region.png)
+ ![Figure 1: Maternal mortality by region over time](Screenshot from 2025-03-17 12-54-01.png)
 
 
 

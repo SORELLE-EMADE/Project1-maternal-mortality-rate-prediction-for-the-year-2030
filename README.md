@@ -37,19 +37,9 @@ This project investigates the association between maternal mortality and the fol
    - Heatmaps and maps  
    - Trend plots
 
-    **Insert Figure:**  
-   *Example: A time series plot showing maternal mortality trend from 2000 to 2017*  
-   `![](figures/mmr_trend_plot.png)`
-
 3. **Regression Modeling**  
    Linear regression and multivariate regression models were applied to identify associations and predictive factors.
-
-4. **Mapping and Geographic Analysis**  
-   Using the `rworldmap` package to visualize MMR by region.
-
-    **Insert Figure:**  
-   *Example: World map displaying MMR by country*  
-   `![](figures/mmr_world_map.png)`
+`
 
 ---
 
@@ -68,7 +58,7 @@ The dataset includes the following columns:
 ---
 
 ## Results: Trend of maternal mortality
-
+Screenshot from 2025-03-17 12-54-01.png
 
 
 

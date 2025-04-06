@@ -59,7 +59,7 @@ The dataset includes the following columns:
 
 ## Results: Trend of maternal mortality
  
-![Figure: Trend of maternal mortality]()
+![Figure: Trend of maternal mortality](https://github.com/SORELLE-EMADE/Project1-maternal-mortality-rate-prediction-for-the-year-2030/blob/bb353c2b69cb173a8f3979e29c9bcf897a8e5007/Screenshot%20from%202025-03-17%2012-54-01.png)
 
 
 ---

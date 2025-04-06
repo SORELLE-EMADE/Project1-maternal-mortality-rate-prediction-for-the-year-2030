@@ -58,8 +58,8 @@ The dataset includes the following columns:
 ---
 
 ## Results: Trend of maternal mortality
- ![Screenshot from 2025-03-17 12-54-01.png](Screenshot from 2025-03-17 12-54-01.png)
-
+ 
+![Figure: Trend of maternal mortality](Distribution2.png)
 
 
 ---
